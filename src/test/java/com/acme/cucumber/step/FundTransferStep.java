@@ -48,6 +48,13 @@ public class FundTransferStep {
         assertThat(fundTransferResult.getStatus()).isEqualTo(FundTransferStatus.OK);
     }
 
+    @Alors("^le transfert est invalide$")
+    public void le_transfert_est_invalide() throws Throwable {
+        FundTransferResult fundTransferResult = (FundTransferResult)storageMap.get("fund_transfer_result");
+        assertThat(fundTransferResult.getStatus()).isNotEqualTo(    FundTransferStatus.OK);
+    }
+
+
     @Alors("^le solde du compte bancaire \"(.*?)\" est de (\\d+) unités monétaires$")
     public void le_solde_du_compte_bancaire_est_de_unités_monétaires(String accountName, int balance) throws Throwable {
         BankAccount bankAccount = (BankAccount)storageMap.get(accountName);
