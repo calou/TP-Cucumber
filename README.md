@@ -16,8 +16,22 @@ Le product owner vient vous voir et vous dit:
 
 ##Etape 2
 ####Objectif
-Créer une nouvelle feature pour implémenter le scénario avec tableau
+Créer une nouvelle feature pour implémenter le scénario avec tableau.
+<br /><br />
+Exemple de step implémentant un tableau :
 
+    Soit les comptes suivants:
+        | A      | 500   |
+        | B      | 100   |
+
+Autre exemple de step implémentant un tableau :
+
+    Soit les comptes suivants:
+        | compte | solde |
+        | A      | 500   |
+        | B      | 100   |
+
+Ces deux exemples sont valides.
 ##Etape 3 
 ####Objectif
 Créer une nouvelle feature pour implémenter un plan de scénario
