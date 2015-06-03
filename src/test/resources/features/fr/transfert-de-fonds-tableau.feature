@@ -15,3 +15,11 @@ Fonctionnalité: Transfert de fonds avec tableaux
       | compte | solde |
       | A      | 450   |
       | B      | 150   |
+
+  Scénario: Transferts de fonds invalides
+    Quand un transfert de fonds de 1000 unités monétaires est effectué depuis le compte bancaire "A" vers le compte bancaire "B"
+    Alors le transfert est invalide
+    Et les soldes des comptes bancaires sont :
+      | compte | solde |
+      | A      | 500   |
+      | B      | 100   |

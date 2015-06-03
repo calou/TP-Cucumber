@@ -83,6 +83,4 @@ public class FundTransferStep {
             assertThat(bankAccount.getBalance()).isEqualTo(balance);
         }
     }
-
-
 }
