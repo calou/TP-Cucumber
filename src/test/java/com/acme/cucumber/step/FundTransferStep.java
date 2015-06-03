@@ -12,6 +12,7 @@ import cucumber.api.java.fr.Soit;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,6 +60,28 @@ public class FundTransferStep {
     public void le_solde_du_compte_bancaire_est_de_unités_monétaires(String accountName, int balance) throws Throwable {
         BankAccount bankAccount = (BankAccount)storageMap.get(accountName);
         assertThat(bankAccount.getBalance()).isEqualTo(new BigDecimal(balance));
+    }
+
+
+    @Soit("^les comptes suivants:$")
+    public void les_comptes_suivants(List<Map<String,String>> mapList) throws Throwable {
+        for(Map<String, String> map : mapList){
+            String accountName = map.get("compte");
+            BigDecimal balance = new BigDecimal(Double.parseDouble(map.get("solde")));
+            BankAccount bankAccount = BankAccount.builder().balance(balance).build();
+            storageMap.put(accountName, bankAccount);
+        }
+    }
+
+    @Alors("^les soldes des comptes bancaires sont :$")
+    public void les_soldes_des_comptes_bancaires_sont(List<Map<String,String>> mapList) throws Throwable {
+        for(Map<String, String> map : mapList){
+            String accountName = map.get("compte");
+            BigDecimal balance = new BigDecimal(Double.parseDouble(map.get("solde")));
+
+            BankAccount bankAccount = (BankAccount) storageMap.get(accountName);
+            assertThat(bankAccount.getBalance()).isEqualTo(balance);
+        }
     }
 
 
