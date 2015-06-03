@@ -34,9 +34,10 @@ Autre exemple de step implémentant un tableau :
 Ces deux exemples sont valides.
 ##Etape 3 
 ####Objectif
-Créer une nouvelle feature pour implémenter un plan de scénario
+Créer une nouvelle feature pour implémenter un plan de scénario (*scenario outline* en anglais)
 
-##Exercice 2
+
+###Exercice 2
 Le product owner revient vous voir et vous dit:
 > Je viens de discuter avec le client et il m'a dit que les comptes bancaires être à découvert...
 > Ah oui, et il faudrait aussi avoir la possibilité de geler un compte...  Donc toute transaction pour laquelle le compte débiteur ou le compte créditeur est gelé sera refusée
