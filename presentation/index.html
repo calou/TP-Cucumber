@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Retour d'expérience sur Cucumber/Selenium</title>
+    <link href="css/custom.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jmpress.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="header">
+    <div class="title">
+        Retour d'expérience sur Cucumber/Selenium
+    </div>
+</div>
+<div id="quick_link">
+    <ul>
+    </ul>
+</div>
+
+<div id="presentation">
+    <div id="bored" class="step" data-x="0" >
+        <q>Est-ce que vous trouvez le code ci-dessous lisible ? </q>
+        
+        <pre class="prettyprint">
+<code class="language-java">@Test
+public void applyNominalCase() {
+    BankAccount debtor = BankAccount.builder().balance(new BigDecimal(1000)).build();
+    BankAccount creditor = BankAccount.builder().balance(new BigDecimal(1000)).build();
+
+    FundTransfer fundTransfer = FundTransfer.builder().debtorBankAccount(debtor)
+        .creditorBankAccount(creditor).amount(new BigDecimal(500)).build();
+
+    FundTransferResult fundTransferResult = fundTransferService.apply(fundTransfer);
+    
+    assertThat(fundTransferResult.getFundTransfer()).isEqualTo(fundTransfer);
+    assertThat(fundTransferResult.getStatus()).isEqualTo(FundTransferStatus.OK);
+    assertThat(debtor.getBalance()).isEqualTo(new BigDecimal(500));
+    assertThat(creditor.getBalance()).isEqualTo(new BigDecimal(1500));
+}</code>
+        </pre>
+    </div>
+
+    <div id="s2" class="step" data-x="3000" data-scale="2">
+        <div class="title">Et le code suivant ?</div>
+        <pre>
+<div class="gherkin gherkin_comment" data-jmpress="colorize after step"># language: fr</div>
+<div class="gherkin gherkin_header"  data-jmpress="colorize after .gherkin_comment">Fonctionnalité: Transfert de fonds</div>
+<div class="gherkin gherkin_context" data-jmpress="colorize after .gherkin_header">  Contexte:
+    Soit un compte bancaire "A" disposant d'un solde de 1000 unités monétaires
+    Et un compte bancaire "B" disposant d'un solde de 1000 unités monétaires</div>
+<div class="gherkin gherkin_scenario" data-jmpress="colorize after .gherkin_context">  Scénario: Transferts de fonds valides
+    Quand un transfert de fonds de 500 unités monétaires est effectué depuis "A" vers "B"
+    Alors le transfert est valide
+    Et le solde du compte bancaire "A" est de 500 unités monétaires
+    Et le solde du compte bancaire "B" est de 1500 unités monétaires</div>
+
+        </pre>
+    </div>
+
+    <div id="s3" class="step slide" data-x="6000">
+        <q>Would you like to <strong>impress your audience</strong> with <strong>stunning visualization</strong> of your talk?</q>
+    </div>
+
+    <div id="trye" class="step" data-x="6000" data-y="1500" data-rotate="90" data-scale="2">
+        <span class="try">then you should try</span>
+        <h1>impress.js<sup>*</sup></h1>
+        <span class="footnote"><sup>*</sup> no rhyme intended</span>
+    </div>
+
+    <div id="its" class="step" data-x="6000" data-y="5000" data-rotate="90" data-scale="2">
+        <p>It's a <strong>presentation tool</strong> <br/>
+        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
+        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
+    </div>
+
+    <div id="rr" class="step" data-x="6000" data-y="10000" data-rotate="0" data-scale="2">
+        <p>Yeah</p>
+    </div>
+
+    <div id="rr2" class="step" data-x="9000" data-y="10000" data-rotate="0" data-scale="3">
+        <p>Yeah Yeah</p>
+    </div>
+
+</div>
+
+<script>    
+    $(function() {
+        var presentation = $("#presentation");
+        presentation.jmpress({
+            viewPort: {
+                width: 700,
+                height: 700
+            },
+            keyboard: {
+                keys: {
+                    38: "up",
+                    40: "down"
+                }
+            }
+        });
+
+
+        //createMenu();
+    });
+
+    function createMenu(){
+        var i = 1;
+        var quickSteps = $("#quick_link ul");
+        $(".step").each(function(step){
+            var id = $(this).attr("id");
+            if(id != undefined){
+                var url = "#/"+id;
+                quickSteps.append("<li><a href='"+url+"'>"+id+"</li>");
+                console.log( id + " - "+ url);
+                i++;
+            }
+        });
+    }
+</script>
+
+
+<script type="text/javascript" src="js/run_prettify.js"></script>
+
+</body>
+</html>
