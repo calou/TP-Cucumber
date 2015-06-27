@@ -94,18 +94,18 @@ q:before, q:after{
 	position: fixed;
 	z-index:9999;
 	width: 20px;
-	height:90%;
+	height:100%;
 
 }
 
 #quick_link ul {
 	padding: 20px 15px;
+	margin: 0px;
 	display:none;
 	float: left;
 	height:100%;
-	background:rgba(0, 0, 255, 0.5)	;
+	background:rgba(30, 30, 30, 0.8);
 	list-style: none;
-	border-radius: 0px 15px 15px 0px;
 }
 
 #quick_link:hover ul {
@@ -114,8 +114,8 @@ q:before, q:after{
 
 #quick_link ul li a {
 	text-decoration:none;
-	font-size:20px;
-	color: #333333;
+	font-size:25px;
+	color: #EFEFEF;
 }
 
 #quick_link ul li a:hover {

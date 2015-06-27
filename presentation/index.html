@@ -34,8 +34,6 @@
     </div>
 
     <div id="junit" class="step" data-x="0" >
-        <q>Est-ce que vous trouvez le code ci-dessous lisible ? </q>
-        
         <pre class="prettyprint">
 <code class="language-java">@Test
 public void applyNominalCase() {
@@ -53,10 +51,11 @@ public void applyNominalCase() {
     assertThat(creditor.getBalance()).isEqualTo(new BigDecimal(1500));
 }</code>
         </pre>
+        <q id="q1" data-jmpress="appear after 1ms step">Est-ce que vous trouvez le code ci-dessous lisible ? </q>
+        <q data-jmpress="appear after q1">Est-ce que vous trouvez le code ci-dessous lisible <b>pour le commun des mortels</b> ? </q>
     </div>
 
     <div id="feature" class="step" data-x="3000" data-scale="2">
-        <div class="title">Et le code suivant ?</div>
         <pre  class="prettyprint"><span class="nocode">
 <div class="gherkin gherkin_comment"># language: fr</div>
 <div class="gherkin gherkin_header">Fonctionnalité: Transfert de fonds</div>
@@ -69,11 +68,12 @@ public void applyNominalCase() {
     Et le solde du compte bancaire "A" est de 500 unités monétaires
     Et le solde du compte bancaire "B" est de 1500 unités monétaires</div>
         </span></pre>
+        <div class="title">Et le code ci-dessus ?</div>
     </div>
 
 
-    <div id="autopsie" class="step" data-x="6000" data-scale="1">
-        <div class="title">Autopsie d'une feature</div>
+    <div id="Anatomie" class="step" data-x="6000" data-scale="1">
+        <div class="title">Anatomie d'une feature</div>
         <pre  class="prettyprint"><span class="nocode">
 <div class="gherkin gherkin_comment" data-jmpress="highlight after step"># language: fr</div>
 <div class="gherkin gherkin_header"  data-jmpress="highlight after .gherkin_comment">Fonctionnalité: Transfert de fonds</div>
@@ -86,9 +86,27 @@ public void applyNominalCase() {
     Et le solde du compte bancaire "A" est de 500 unités monétaires
     Et le solde du compte bancaire "B" est de 1500 unités monétaires</div>
         </span></pre>
+        <div class="subtitle">
+            <div data-jmpress="appear after 1ms step">
+                &nbsp;<br/>&nbsp;
+            </div>
+            <div data-jmpress="appear after step">
+                Déclaration du langage pour Cucumber<br/>&nbsp;
+            </div>
+            <div data-jmpress="appear after .gherkin_comment">
+                Définition du nom de la feature<br/>&nbsp;
+            </div>
+            <div data-jmpress="appear after .gherkin_header">
+                <b>Contexte</b> : ensemble de <i>steps</i> exécutés préalablement à chaque scénario
+            </div>
+            <div data-jmpress="appear after .gherkin_context">
+                <b>Scénario</b> : ensemble de <i>steps</i> constituant le test<br/>&nbsp;
+            </div>
+
+        </div>
     </div>
 
-<div id="magie" class="step" data-x="6000" data-y="1500" data-rotate="90" data-scale="2">
+<div id="magie" class="step" data-x="6000" data-y="1800" data-rotate="90" data-scale="2">
         <div class="title">Comment la magie opère t-elle ?</div>
         <div class="subtitle">
             2 prérequis :
