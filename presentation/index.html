@@ -7,6 +7,7 @@
 
     <title>Retour d'expérience sur Cucumber/Selenium</title>
     <link href="css/custom.css" rel="stylesheet" />
+    <link href="css/desert.css" rel="stylesheet" />
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jmpress.js"></script>
@@ -16,18 +17,23 @@
 
 <body>
 
-<div id="header">
-    <div class="title">
-        Retour d'expérience sur Cucumber/Selenium
-    </div>
-</div>
 <div id="quick_link">
     <ul>
     </ul>
 </div>
 
 <div id="presentation">
-    <div id="bored" class="step" data-x="0" >
+
+    <div id="title" class="step" data-x="-10000" data-y="0" data-scale="5">
+        
+        <div class="big-title">Tester une application web avec<br/><b><i>Cucumber</i></b> et <b><i>Selenium</i></b></div>
+
+        <img src="img/cucumber-logo.svg" style="position:relative; left: -10px;"/>
+        <img src="img/big-logo.png" style="position:relative; top:28px; left: 10px;"/>
+        
+    </div>
+
+    <div id="junit" class="step" data-x="0" >
         <q>Est-ce que vous trouvez le code ci-dessous lisible ? </q>
         
         <pre class="prettyprint">
@@ -49,38 +55,201 @@ public void applyNominalCase() {
         </pre>
     </div>
 
-    <div id="s2" class="step" data-x="3000" data-scale="2">
+    <div id="feature" class="step" data-x="3000" data-scale="2">
         <div class="title">Et le code suivant ?</div>
-        <pre>
-<div class="gherkin gherkin_comment" data-jmpress="colorize after step"># language: fr</div>
-<div class="gherkin gherkin_header"  data-jmpress="colorize after .gherkin_comment">Fonctionnalité: Transfert de fonds</div>
-<div class="gherkin gherkin_context" data-jmpress="colorize after .gherkin_header">  Contexte:
+        <pre  class="prettyprint"><span class="nocode">
+<div class="gherkin gherkin_comment"># language: fr</div>
+<div class="gherkin gherkin_header">Fonctionnalité: Transfert de fonds</div>
+<div class="gherkin gherkin_context">  Contexte:
     Soit un compte bancaire "A" disposant d'un solde de 1000 unités monétaires
     Et un compte bancaire "B" disposant d'un solde de 1000 unités monétaires</div>
-<div class="gherkin gherkin_scenario" data-jmpress="colorize after .gherkin_context">  Scénario: Transferts de fonds valides
+<div class="gherkin gherkin_scenario">  Scénario: Transferts de fonds valides
     Quand un transfert de fonds de 500 unités monétaires est effectué depuis "A" vers "B"
     Alors le transfert est valide
     Et le solde du compte bancaire "A" est de 500 unités monétaires
     Et le solde du compte bancaire "B" est de 1500 unités monétaires</div>
+        </span></pre>
+    </div>
 
+
+    <div id="autopsie" class="step" data-x="6000" data-scale="1">
+        <div class="title">Autopsie d'une feature</div>
+        <pre  class="prettyprint"><span class="nocode">
+<div class="gherkin gherkin_comment" data-jmpress="highlight after step"># language: fr</div>
+<div class="gherkin gherkin_header"  data-jmpress="highlight after .gherkin_comment">Fonctionnalité: Transfert de fonds</div>
+<div class="gherkin gherkin_context" data-jmpress="highlight after .gherkin_header">  Contexte:
+    Soit un compte bancaire "A" disposant d'un solde de 1000 unités monétaires
+    Et un compte bancaire "B" disposant d'un solde de 1000 unités monétaires</div>
+<div class="gherkin gherkin_scenario" data-jmpress="highlight after .gherkin_context">  Scénario: Transferts de fonds valides
+    Quand un transfert de fonds de 500 unités monétaires est effectué depuis "A" vers "B"
+    Alors le transfert est valide
+    Et le solde du compte bancaire "A" est de 500 unités monétaires
+    Et le solde du compte bancaire "B" est de 1500 unités monétaires</div>
+        </span></pre>
+    </div>
+
+<div id="magie" class="step" data-x="6000" data-y="1500" data-rotate="90" data-scale="2">
+        <div class="title">Comment la magie opère t-elle ?</div>
+        <div class="subtitle">
+            2 prérequis :
+        </div>
+        <ul>
+            <li>
+                La définition des <i>steps</i>
+            </li>
+            <li>
+                Un runner
+            </li>
+        </ul>
+    </div>
+
+    <div id="steps_definition" class="step" data-x="6000" data-y="5000" data-rotate="90" data-scale="2">
+        <div class="title">La définition des <i>steps</i></div>
+
+        <pre class="prettyprint">
+<code class="language-java">
+    @Soit("^un compte bancaire \"(.*?)\" disposant d'un solde de (\\d+) unités monétaires$")
+    public void createAccount(String accountName, int balance) throws Throwable {
+        BankAccount bankAccount = BankAccount.builder().balance(new BigDecimal(balance)).build();
+        storageMap.put(accountName, bankAccount);
+    }
+
+    @Quand("^un transfert de fonds de (\\d+) unités monétaires est effectué depuis \"(.*?)\" vers\"(.*?)\"$")
+    public void doTransfert(int amount, String debtorAccountName, String creditorAccountName) throws Throwable {
+        BankAccount debtor = (BankAccount)storageMap.get(debtorAccountName);
+        BankAccount creditor = (BankAccount)storageMap.get(creditorAccountName);
+        FundTransfer fundTransfer = FundTransfer.builder().amount(new BigDecimal(amount)).debtorBankAccount(debtor).creditorBankAccount(creditor).build();
+        FundTransferResult fundTransferResult = fundTransferService.apply(fundTransfer);
+        storageMap.put("fund_transfer_result", fundTransferResult);
+    }
+
+    @Alors("^le transfert est valide$")
+    public void checkIfTransferIsValid() throws Throwable {
+        FundTransferResult fundTransferResult = (FundTransferResult)storageMap.get("fund_transfer_result");
+        assertThat(fundTransferResult.getStatus()).isEqualTo(FundTransferStatus.OK);
+    }
+</code>
         </pre>
     </div>
 
-    <div id="s3" class="step slide" data-x="6000">
-        <q>Would you like to <strong>impress your audience</strong> with <strong>stunning visualization</strong> of your talk?</q>
+    <div id="runner" class="step" data-x="6000" data-y="8000" data-rotate="90" data-scale="0">
+        <div class="title">Le runner !</div>
+
+        <pre class="prettyprint">
+<code class="language-java">
+package com.acme.cucumber.runner;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features={"classpath:features"}, glue = {"com.acme.cucumber.step"})
+public class FundTransferRunnerTest {
+}
+</code>
+        </pre>
     </div>
 
-    <div id="trye" class="step" data-x="6000" data-y="1500" data-rotate="90" data-scale="2">
-        <span class="try">then you should try</span>
-        <h1>impress.js<sup>*</sup></h1>
-        <span class="footnote"><sup>*</sup> no rhyme intended</span>
+
+    <div id="what-else" class="step" data-x="6000" data-y="10000" data-rotate="90" data-scale="0">
+        <q><i>What else ?</i></q>
+        <div id="generation" class="subtitle" data-jmpress="appear after step">
+            Génération des squelettes des méthodes pour les steps
+            <ol>
+                <li>
+                    Modifier la feature
+<pre  class="prettyprint"><span class="nocode">Scénario: Transferts de fonds valides
+    ...
+    Et le compte bancaire "A" n'est pas bloqué</span></pre>
+                </li>
+                <li>
+                    Exécuter le runner
+                </li>
+                <li>
+                    Retrouver le squelette de la méthode du step dans les logs
+            <pre class="prettyprint"><code class="language-java">@Alors("^le compte bancaire \"(.*?)\" n'est pas bloqué$")
+public void le_compte_bancaire_n_est_pas_bloqué(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}</code></pre>
+                </li>
+            </ol>
+        </div>
+        <div id="use-table" class="subtitle" data-jmpress="appear after #generation">
+            Utilisation des données sous forme tabulaire :
+<pre  class="prettyprint"><span class="nocode">Soit les comptes suivants:
+    | compte | solde |
+    | A      | 500   |
+    | B      | 100   |</span></pre>
+    <pre class="prettyprint"><code class="language-java">@Soit("^les comptes suivants:$")
+public void les_comptes_suivants(List&lt;Map&lt;String,String&gt;&gt; mapList) throws Throwable {
+    for(Map&lt;String, String&gt; map : mapList){
+        String accountName = map.get("compte");
+        BigDecimal balance = new BigDecimal(Double.parseDouble(map.get("solde")));
+        BankAccount bankAccount = BankAccount.builder().balance(balance).build();
+        storageMap.put(accountName, bankAccount);
+    }
+}</code></pre>
+        </div>
+        <div id="plan-de-scenario" class="subtitle" data-jmpress="appear after #use-table">
+            Les plans de scénario
+<pre  class="prettyprint"><span class="nocode">Plan du scénario: Transferts de fonds valides
+    Soit les comptes suivants:
+      | compte             | solde                     |
+      | &lt;compte_debiteur&gt;  | &lt;solde_debiteur_initial&gt;  |
+      | &lt;compte_crediteur&gt; | &lt;solde_crediteur_initial&gt; |
+    ...
+    Et les soldes des comptes bancaires sont :
+      | compte             | solde                   |
+      | &lt;compte_debiteur&gt;  | &lt;solde_debiteur_final&gt;  |
+      | &lt;compte_crediteur&gt; | &lt;solde_crediteur_final&gt; |
+
+    Exemples:
+      | montant | validite | compte_debiteur | solde_debiteur_initial | solde_debiteur_final | compte_crediteur | solde_crediteur_initial | solde_crediteur_final |
+      | 50      | valide   | A               | 500                    | 450                  | B                | 100                     | 150                   |
+      | 1000    | invalide | A               | 500                    | 500                  | B                | 100                     | 100                   |
+</span></pre>
+        </div>
+        <div id="hook" class="subtitle" data-jmpress="appear after #plan-de-scenario">
+            <div>Des hooks</div>
+            <div style="float:left; width:50%;">
+                <pre class="prettyprint">
+<code class="language-java">@Before
+public void beforeScenario(){
+    ...
+}
+@Before("web")
+public void beforeWebScenario(){
+    ...
+}
+@After("myHook")
+public void afterMyHookScenario(){
+    ...
+}
+</code>
+                </pre>
+            </div>
+        <div style="float:left; width:45%;margin-left: 10px;">
+            <pre  class="prettyprint"><span class="nocode">@web
+Scénario: Login réussi
+    ...
+
+@web @myHook
+Scénario: Login échoué
+    ...
+            </span></pre>
+        </div>
+        </div>
+        <div class="subtitle" data-jmpress="appear after #hook">
+            ...
+        </div>
     </div>
 
-    <div id="its" class="step" data-x="6000" data-y="5000" data-rotate="90" data-scale="2">
-        <p>It's a <strong>presentation tool</strong> <br/>
-        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
-        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
-    </div>
+
+
+
+
 
     <div id="rr" class="step" data-x="6000" data-y="10000" data-rotate="0" data-scale="2">
         <p>Yeah</p>
@@ -90,6 +259,9 @@ public void applyNominalCase() {
         <p>Yeah Yeah</p>
     </div>
 
+    <div id="overview" class="step" data-x="10000" data-y="10000" data-scale="20">
+        <q>Merci</q>
+    </div>
 </div>
 
 <script>    
@@ -109,7 +281,7 @@ public void applyNominalCase() {
         });
 
 
-        //createMenu();
+        createMenu();
     });
 
     function createMenu(){

@@ -27,7 +27,7 @@ html, body {
 	transition:         opacity 1s;
 }
 
-/* fade out inactive slides */
+/* appear out inactive slides */
 .step:not(.active) {
 	opacity: 0.3;
 }
@@ -39,6 +39,10 @@ pre {
     border: none !important;
     color:#111111;
     text-shadow: 0 rgba(0, 0, 0, .1);
+    background-color: #EEEEEE;
+    padding: 5px 10px !important;
+    height:100%;
+    border-radius: 10px;
 }
 
 code {
@@ -47,9 +51,28 @@ code {
     text-shadow: 0 rgba(0, 0, 0, .1);
 }
 
+.big-title {
+	font-size:60px;
+	text-align:center;
+	margin-bottom: 85px;
+}
+
 .title, q {
 	font-size: 48px;
 }
+
+.subtitle {
+	margin-top: 30px;
+	font-size: 36px;	
+}
+
+.step ul, .step ol {
+	font-size: 26px;	
+}
+.step ol li pre {
+	margin-top: 0px;
+}
+
 q:before, q:after{
 
 }
@@ -69,40 +92,63 @@ q:before, q:after{
 
 #quick_link {
 	position: fixed;
-	top: 18px;
 	z-index:9999;
 	width: 20px;
-	height:100%;
-	background:#EFEFEF8F;
+	height:90%;
 
 }
 
 #quick_link ul {
-	padding: 20px 5px;
+	padding: 20px 15px;
 	display:none;
 	float: left;
 	height:100%;
-	background:#CCCCCC;
+	background:rgba(0, 0, 255, 0.5)	;
+	list-style: none;
+	border-radius: 0px 15px 15px 0px;
 }
 
 #quick_link:hover ul {
 	display:inline;
 }
 
-.do-colorize {
-	border-color: #AFD8E6;
+#quick_link ul li a {
+	text-decoration:none;
+	font-size:20px;
+	color: #333333;
+}
+
+#quick_link ul li a:hover {
+	text-decoration: underline;
+}
+
+.will-highlight {
+	border-width: 2px;
+	border-color:transparent;
 	border-style: dashed;
-	background: #EDFAFF;
-}
-
-.has-colorize {
-	border-color: transparent !important;
-	background: none !important;
-}
-
-.gherkin {
-	border-width: 2px;	
-	margin-bottom: -25px;
 	padding: 5px 10px;
 	border-radius: 10px;
+}
+
+.do-highlight {
+	border-color: #9F9F9F !important;
+}
+
+.has-highlight {
+	border-color: transparent !important;
+}
+
+.will-appear {
+	display:none;
+}
+.do-appear {
+	display:block;
+}
+.has-appear {
+	display:none;
+}
+
+
+.prettyprint .nocode {
+	color: #EFEFEF;
 }
