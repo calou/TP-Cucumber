@@ -8,6 +8,8 @@
     <title>Retour d'expérience sur Cucumber/Selenium</title>
     <link href="css/custom.css" rel="stylesheet" />
     <link href="css/desert.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jmpress.js"></script>
@@ -24,16 +26,16 @@
 
 <div id="presentation">
 
-    <div id="title" class="step" data-x="-10000" data-y="0" data-scale="5">
+    <div id="titre" class="step" data-x="-10000" data-y="0" data-scale="5">
         
-        <div class="big-title">Tester une application web avec<br/><b><i>Cucumber</i></b> et <b><i>Selenium</i></b></div>
+        <div class="big-title">Tester une application web avec</div>
 
         <img src="img/cucumber-logo.svg" style="position:relative; left: -10px;"/>
         <img src="img/big-logo.png" style="position:relative; top:28px; left: 10px;"/>
         
     </div>
 
-    <div id="junit" class="step" data-x="0" >
+    <div id="ExempleJUnit" class="step" data-x="0" >
         <pre class="prettyprint">
 <code class="language-java">@Test
 public void applyNominalCase() {
@@ -269,13 +271,107 @@ Scénario: Login échoué
 
 
 
-    <div id="rr" class="step" data-x="6000" data-y="10000" data-rotate="0" data-scale="2">
-        <p>Yeah</p>
+    <div id="selenium" class="step" data-x="4500" data-y="10000" data-rotate="0" data-scale="2">
+        <div class="title">Selenium</div>
     </div>
 
-    <div id="rr2" class="step" data-x="9000" data-y="10000" data-rotate="0" data-scale="3">
-        <p>Yeah Yeah</p>
+
+    <div id="avantages" class="step" data-x="4500" data-y="12000" data-rotate="180" data-scale="3">
+        <div class="title">Avantages</div>
+        <ul style="list-style:none;">
+            <li>
+                <span class="fa fa-thumbs-o-up"/>&nbsp;Expressivité des tests
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-up"/>&nbsp;Réutilisation de code
+                <ul>
+                    <li>
+                        simplicité pour créer de nouveaux tests
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-up"/>&nbsp;Tests pertinents du point de vue de l'utilisateur
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-up"/>&nbsp;Couverture de tests
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-up"/>&nbsp;Possibilité de tester sur plusieurs navigateurs
+            </li>
+        </ul>
     </div>
+
+    <div id="inconvenients" class="step" data-x="7000" data-y="12000" data-rotate="270" data-scale="3">
+        <div class="title">Inconvénients</div>
+        <ul style="list-style:none;">
+            <li>
+                <span class="fa fa-thumbs-o-down"/>&nbsp;Lenteur des tests
+                <ul>
+                    <li>
+                        <b>45 min</b> sur l'un de nos projets 
+                    </li>
+                    <li>
+                        surtout lorsqu'on utilise les <i>webdrivers</i> non <i>headless</i>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-down"/>&nbsp;Tests sensibles
+                <ul>
+                    <li>
+                        nécessite la mise en place de nombreuses temporisations
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-down"/>&nbsp;Debug difficile
+            </li>
+            <li>
+                <span class="fa fa-thumbs-o-down"/>&nbsp;Problèmes avec certaines requête <i>AJAX</i>
+                <ul>
+                    <li>
+                        rencontrés uniquement en utilisant le <i>webdriver HtmlUnit</i>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="REX" class="step" data-x="9000" data-y="7000" data-rotate="270" data-scale="0">
+        <div class="title">Conseils</div>
+        <ul style="list-style:none;">
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Ecrire des steps génériques et réutilisables
+            </li>
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Limiter le nombre de steps par scénario
+                <ul>
+                    <li>
+                        écrire plusieurs scénarios à la place
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Intégrer ces tests dans le processus d'intégration continue
+            </li>
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Créer des <i>runners</i> pour chaque features
+            </li>
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Utiliser les plugins Cucumber pour IDE
+                <ul>
+                    <li>
+                        pour <i>IntelliJ</i>
+                    </li>
+                    <li>
+                        pour <i>Eclipse</i> (fonctionne uniquement avec les features en <b>anglais</b>)
+                    </li>
+                </ul> 
+            </li>
+        </ul>
+    </div>
+
 
     <div id="overview" class="step" data-x="10000" data-y="10000" data-scale="20">
         <q>Merci</q>
