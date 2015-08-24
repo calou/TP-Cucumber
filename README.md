@@ -16,7 +16,7 @@ Le product owner vient vous voir et vous dit:
 
 ##Etape 2
 ####Objectif
-Créer une nouvelle feature pour implémenter le scénario avec tableau.
+Créer une nouvelle feature pour implémenter les mêmes scénarios que précédemment mais en utilisant cette fois un tableau.
 <br /><br />
 Exemple de step implémentant un tableau :
 
@@ -34,7 +34,7 @@ Autre exemple de step implémentant un tableau :
 Ces deux exemples sont valides.
 ##Etape 3 
 ####Objectif
-Créer une nouvelle feature pour implémenter un plan de scénario (*scenario outline* en anglais)
+Créer une nouvelle feature pour implémenter la même chose, en utilisant cette fois un plan de scénario (*scenario outline* en anglais)
 
 
 ###Exercice 2
