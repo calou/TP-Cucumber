@@ -155,6 +155,12 @@ q:before, q:after{
 .do-appear {
 	display:block;
 }
+span.do-appear {
+	display:inline;
+}
+li.do-appear {
+	display: list-item;
+}
 .has-appear {
 	display:none;
 }

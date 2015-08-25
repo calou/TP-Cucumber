@@ -275,8 +275,52 @@ Scénario: Login échoué
         <div class="title">Selenium</div>
     </div>
 
+    <div id="project" class="step" data-x="4500" data-y="12000" data-rotate="0" data-scale="2">
+        <div class="title">Notre projet</div>
+        <ul>
+            <li>2 applications web <i>standalone</i></li> 
+            <li>
+                1 application web modulaire et comprenant 5 modules
+                <ul>
+                    <li>
+                        connectée à une dizaine de schémas de base de données (Oracle, PostgreSQL)
+                    </li>
+                    <li>
+                        échangeant des données avec des "<i>webservices</i>"
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-    <div id="avantages" class="step" data-x="4500" data-y="12000" data-rotate="180" data-scale="3">
+    <div id="stack" class="step" data-x="4500" data-y="14000" data-rotate="0" data-scale="1">
+        <div class="title">La stack</div>
+        <ul>
+            Frameworks
+            <li>
+                <ul>
+                    <li>Maven</li>
+                    <li>JSF2, Primefaces, Spring, Hibernate<span id="frameworks" data-jmpress="appear after step">, Lombok, MyBatis</span></li> 
+                    <li>JUnit, Mockito, PowerMock<span id="test-frameworks" data-jmpress="appear after #frameworks">, assertJ, DbUnit, Cucumber, Selenium</span></li>
+                    <li>Bases de données: PostgreSQL<span id="databases" data-jmpress="appear after #test-frameworks">, H2</span> et Oracle</li>
+                </ul>
+            </li>
+            <li>
+                Du coté de l'infrastructure :
+                <ul>
+                    <li>Tomcat7</li>
+                    <li>Jenkins</li>
+                    <li>Gitblit</li>
+                    <li>Sonatype Nexus</li>
+                    <li data-jmpress="appear after #databases">
+                        Docker <small>(pour les déploiements automatiques)</small>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="avantages" class="step" data-x="4500" data-y="20000" data-rotate="180" data-scale="3">
         <div class="title">Avantages</div>
         <ul style="list-style:none;">
             <li>
@@ -302,7 +346,9 @@ Scénario: Login échoué
         </ul>
     </div>
 
-    <div id="inconvenients" class="step" data-x="7000" data-y="12000" data-rotate="270" data-scale="3">
+
+
+    <div id="inconvenients" class="step" data-x="7000" data-y="20000" data-rotate="270" data-scale="3">
         <div class="title">Inconvénients</div>
         <ul style="list-style:none;">
             <li>
