@@ -88,7 +88,7 @@
 		/* ANIMATION */
 		,animation: {
 			transformOrigin: 'top left'
-			,transitionProperty: addComma(mapProperty(pfx('transform'))) + addComma(mapProperty(pfx('perspective'))) + 'opacity'
+			//,transitionProperty: addComma(mapProperty(pfx('transform'))) + addComma(mapProperty(pfx('perspective'))) + 'opacity'
 			,transitionDuration: '1s'
 			,transitionDelay: '500ms'
 			,transitionTimingFunction: 'ease-in-out'
