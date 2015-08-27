@@ -26,7 +26,7 @@ Fonctionnalité: Transfert de fonds
 
   Scénario: Transferts de fonds invalide pour cause de compte débiteur gelé
     Soit les comptes suivants:
-      | A | 500 | gelé |
+      | A | 500 | gelé   |
       | B | 100 | normal |
     Quand un transfert de fonds de 50 unités monétaires est effectué depuis le compte bancaire "A" vers le compte bancaire "B"
     Alors le transfert est invalide pour cause de compte débiteur gelé
@@ -37,7 +37,7 @@ Fonctionnalité: Transfert de fonds
   Scénario: Transferts de fonds invalide pour cause de compte créditeur gelé
     Soit les comptes suivants:
       | A | 500 | normal |
-      | B | 100 | gelé |
+      | B | 100 | gelé   |
     Quand un transfert de fonds de 50 unités monétaires est effectué depuis le compte bancaire "A" vers le compte bancaire "B"
     Alors le transfert est invalide pour cause de compte créditeur gelé
     Et les comptes sont dans l'état suivant:
