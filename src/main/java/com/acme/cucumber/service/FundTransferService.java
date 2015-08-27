@@ -30,18 +30,12 @@ public class FundTransferService {
         else if (creditorBankAccount.isFrozen()){
             fundTransferResult.setStatus(FundTransferStatus.FROZEN_CREDITOR);
         }
-        /*
-         * Il faut que le solde du compte débiteur soit supérieur ou égal au montant de la transaction
-         * pour la transaction soit valide
-         */
-        else if(debtorBankAccount.getBalance().compareTo(fundTransfer.getAmount()) >= 0 ){
+        else {
             BigDecimal debtorNewBalance = debtorBankAccount.getBalance().subtract(fundTransfer.getAmount());
             BigDecimal creditorNewBalance = creditorBankAccount.getBalance().add(fundTransfer.getAmount());
             debtorBankAccount.setBalance(debtorNewBalance);
             creditorBankAccount.setBalance(creditorNewBalance);
             fundTransferResult.setStatus(FundTransferStatus.OK);
-        }else{
-            fundTransferResult.setStatus(FundTransferStatus.DEBTOR_INSUFFICIENT_BALANCE);
         }
         return fundTransferResult;
     }
