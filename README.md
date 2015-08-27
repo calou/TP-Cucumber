@@ -39,11 +39,15 @@ Créer une nouvelle feature pour implémenter la même chose, en utilisant cette
 
 #Exercice 2
 Le product owner revient vous voir et vous dit:
-> Je viens de discuter avec le client et il m'a dit que les comptes bancaires être à découvert...
+> Je viens de discuter avec le client et il m'a dit que les comptes bancaires pouvaient être à découvert...
 > Ah oui, et il faudrait aussi avoir la possibilité de geler un compte...  Donc toute transaction pour laquelle le compte débiteur ou le compte créditeur est gelé sera refusée
 
 ####Objectif de l'exercice
-Créer une feature permettant de tester les cas ci-dessus
+Démarche TDD : 
+
+1. Compléter une des features de l'exercice 1  (au choix) afin de tester ces nouveaux cas : quels cas sont OK ? quels cas sont KO ?
+2. Modifier le code de l'application pour répondre aux nouvelles exigences du client.
+3. Vérifier en relançant la feature.
 
 
 
