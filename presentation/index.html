@@ -9,7 +9,7 @@
     <link href="css/custom.css" rel="stylesheet" />
     <link href="css/desert.css" rel="stylesheet" />
     <link href="css/font-awesome.css" rel="stylesheet" />
-    
+
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jmpress.js"></script>
@@ -27,12 +27,12 @@
 <div id="presentation">
 
     <div id="titre" class="step" data-x="-10000" data-y="0" data-scale="5">
-        
+
         <div class="big-title">Tester une application web avec</div>
 
         <img src="img/cucumber-logo.svg" style="position:relative; left: -10px;"/>
         <img src="img/big-logo.png" style="position:relative; top:28px; left: 10px;"/>
-        
+
     </div>
 
     <div id="ExempleJUnit" class="step" data-x="0" >
@@ -46,7 +46,7 @@ public void applyNominalCase() {
         .creditorBankAccount(creditor).amount(new BigDecimal(500)).build();
 
     FundTransferResult fundTransferResult = fundTransferService.apply(fundTransfer);
-    
+
     assertThat(fundTransferResult.getFundTransfer()).isEqualTo(fundTransfer);
     assertThat(fundTransferResult.getStatus()).isEqualTo(FundTransferStatus.OK);
     assertThat(debtor.getBalance()).isEqualTo(new BigDecimal(500));
@@ -273,12 +273,23 @@ Scénario: Login échoué
 
     <div id="selenium" class="step" data-x="4500" data-y="10000" data-rotate="0" data-scale="2">
         <div class="title">Selenium</div>
+        <ul>
+            <li>Analyse du DOM
+                <pre class="prettyprint"><code class="language-java">By.tagName("h1")   By.className("ma_classe"))  By.linkText(linkText)   By.id(id)</code></pre>
+                <pre class="prettyprint"><code class="language-java">By.xpath("//input[@type='submit' and @value='" + text + "']")</code></pre>
+            </li>
+            <li>Simulation d'actions
+                <pre class="prettyprint"><code class="language-java">DRIVER.findElement(by).getText();</code></pre>
+                <pre class="prettyprint"><code class="language-java">DRIVER.findElement(by).click();</code></pre>
+                <pre class="prettyprint"><code class="language-java">DRIVER.findElement(by).clear(); DRIVER.findElement(by).sendKeys(writtenText);</code></pre>
+            </li>
+        </ul>
     </div>
 
     <div id="project" class="step" data-x="4500" data-y="12000" data-rotate="0" data-scale="2">
         <div class="title">Notre projet</div>
         <ul>
-            <li>2 applications web <i>standalone</i></li> 
+            <li>2 applications web <i>standalone</i></li>
             <li>
                 1 application web modulaire et comprenant 5 modules
                 <ul>
@@ -300,7 +311,7 @@ Scénario: Login échoué
             <li>
                 <ul>
                     <li>Maven</li>
-                    <li>JSF2, Primefaces, Spring, Hibernate<span id="frameworks" data-jmpress="appear after step">, Lombok, MyBatis</span></li> 
+                    <li>JSF2, Primefaces, Spring, Hibernate<span id="frameworks" data-jmpress="appear after step">, Lombok, MyBatis</span></li>
                     <li>JUnit, Mockito, PowerMock<span id="test-frameworks" data-jmpress="appear after #frameworks">, assertJ, DbUnit, Cucumber, Selenium</span></li>
                     <li>Bases de données: PostgreSQL<span id="databases" data-jmpress="appear after #test-frameworks">, H2</span> et Oracle</li>
                 </ul>
@@ -336,10 +347,21 @@ Scénario: Login échoué
             </li>
             <li>
                 <span class="fa fa-thumbs-o-up"/>&nbsp;Tests pertinents du point de vue de l'utilisateur
+                <ul>
+                    <li>
+                        BDD
+                    </li>
+                </ul>
             </li>
             <li>
                 <span class="fa fa-thumbs-o-up"/>&nbsp;Couverture de tests
+                <ul>
+                    <li>
+                        Non-régression
+                    </li>
+                </ul>
             </li>
+
             <li>
                 <span class="fa fa-thumbs-o-up"/>&nbsp;Possibilité de tester sur plusieurs navigateurs
             </li>
@@ -347,41 +369,81 @@ Scénario: Login échoué
     </div>
 
 
-
     <div id="inconvenients" class="step" data-x="7000" data-y="20000" data-rotate="270" data-scale="3">
-        <div class="title">Inconvénients</div>
-        <ul style="list-style:none;">
-            <li>
-                <span class="fa fa-thumbs-o-down"/>&nbsp;Lenteur des tests
-                <ul>
-                    <li>
-                        <b>45 min</b> sur l'un de nos projets 
-                    </li>
-                    <li>
-                        surtout lorsqu'on utilise les <i>webdrivers</i> non <i>headless</i>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <span class="fa fa-thumbs-o-down"/>&nbsp;Tests sensibles
-                <ul>
-                    <li>
-                        nécessite la mise en place de nombreuses temporisations
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <span class="fa fa-thumbs-o-down"/>&nbsp;Debug difficile
-            </li>
-            <li>
-                <span class="fa fa-thumbs-o-down"/>&nbsp;Problèmes avec certaines requête <i>AJAX</i>
-                <ul>
-                    <li>
-                        rencontrés uniquement en utilisant le <i>webdriver HtmlUnit</i>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div data-jmpress="disappear after step">
+
+            <div class="title">Inconvénients : ce qu'on entend souvent</div>
+            <ul>
+                <li>c'est lourd à faire
+                    <ul>
+                        <li><i>oui</i> lors du setup  : mise en place, définition des steps génériques
+                            <ul style="list-style:none;">
+                                <li><span class="fa fa-lightbulb-o"/> source de steps / méthodes génériques sur un repo Viseo</li>
+                            </ul>
+                        </li>
+                        <li><i>non</i> ensuite : quelques minutes par scénario (sauf si dataset complexe à créer)</li>
+                    </ul>
+                </li>
+                <li>c'est lourd à maintenir
+                    <ul>
+                        <li><i>un peu</i>. Mieux vaut quand même limiter les modifications d'IHM
+                            <ul>
+                                <li>Dessiner des mockups</li>
+                                <li>Faire des mini-démos</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>ça sert à rien
+                    <ul>
+                        <li><i>faux</i>
+                            <ul>
+                                <li>Grande couverture de code</li>
+                                <li>Non régression</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+
+        <div data-jmpress="appear after step">
+            <div class="title">Inconvénients : ce qu'on a constaté</div>
+            <ul style="list-style:none;">
+                <li>
+                    <span class="fa fa-thumbs-o-down"/>&nbsp;Lenteur des tests
+                    <ul>
+                        <li>
+                            <b>45 min</b> sur l'un de nos projets
+                        </li>
+                        <li>
+                            surtout lorsqu'on utilise les <i>webdrivers</i> non <i>headless</i>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="fa fa-thumbs-o-down"/>&nbsp;Tests sensibles
+                    <ul>
+                        <li>
+                            nécessite la mise en place de nombreuses temporisations
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="fa fa-thumbs-o-down"/>&nbsp;Debug difficile
+                </li>
+                <li>
+                    <span class="fa fa-thumbs-o-down"/>&nbsp;Problèmes avec certaines requête <i>AJAX</i>
+                    <ul>
+                        <li>
+                            rencontrés uniquement en utilisant le <i>webdriver HtmlUnit</i>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div id="REX" class="step" data-x="9000" data-y="7000" data-rotate="270" data-scale="0">
@@ -395,6 +457,15 @@ Scénario: Login échoué
                 <ul>
                     <li>
                         écrire plusieurs scénarios à la place
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="fa fa-hand-o-right"/>&nbsp;Ne charger les données que dans les scénarios où c'est
+                nécessaire
+                <ul>
+                    <li>
+                        Contexte vs Step
                     </li>
                 </ul>
             </li>
@@ -413,7 +484,7 @@ Scénario: Login échoué
                     <li>
                         pour <i>Eclipse</i> (fonctionne uniquement avec les features en <b>anglais</b>)
                     </li>
-                </ul> 
+                </ul>
             </li>
         </ul>
     </div>

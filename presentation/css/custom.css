@@ -164,7 +164,9 @@ li.do-appear {
 .has-appear {
 	display:none;
 }
-
+.do-disappear {
+	display:none;
+}
 
 .prettyprint .nocode {
 	color: #EFEFEF;
