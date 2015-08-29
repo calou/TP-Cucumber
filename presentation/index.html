@@ -127,7 +127,7 @@ public void applyNominalCase() {
         <div class="title">La définition des <i>steps</i></div>
 
         <pre class="prettyprint">
-<code class="language-java">
+<code class="language-java" style="font-size:16px;">
     @Soit("^un compte bancaire \"(.*?)\" disposant d'un solde de (\\d+) unités monétaires$")
     public void createAccount(String accountName, int balance) throws Throwable {
         BankAccount bankAccount = BankAccount.builder().balance(new BigDecimal(balance)).build();
